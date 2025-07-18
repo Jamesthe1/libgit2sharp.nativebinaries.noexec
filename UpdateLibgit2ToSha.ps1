@@ -97,7 +97,7 @@ Push-Location $libgit2Directory
 </Project>
 "@
 
-    Set-Content -Encoding UTF8 (Join-Path $projectDirectory "nuget.package\build\LibGit2Sharp.NativeBinaries.props") $buildProperties
+    Set-Content -Encoding UTF8 (Join-Path $projectDirectory "nuget.package\build\LibGit2Sharp.NoExec.NativeBinaries.props") $buildProperties
 
     $net46BuildProperties = @"
 <Project>
@@ -111,12 +111,12 @@ Push-Location $libgit2Directory
     <ContentWithTargetPath Include="`$(MSBuildThisFileDirectory)\..\..\runtimes\win-x64\native\*" TargetPath="lib\win32\x64\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <ContentWithTargetPath Include="`$(MSBuildThisFileDirectory)\..\..\runtimes\win-arm64\native\*" TargetPath="lib\win32\arm64\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <ContentWithTargetPath Include="`$(MSBuildThisFileDirectory)\..\..\runtimes\**\*`" Exclude="`$(MSBuildThisFileDirectory)\..\..\runtimes\win-*\**\*" TargetPath="lib\%(RecursiveDir)..\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
-    <ContentWithTargetPath Include="`$(MSBuildThisFileDirectory)\..\..\libgit2\LibGit2Sharp.dll.config" TargetPath="LibGit2Sharp.dll.config" CopyToOutputDirectory="PreserveNewest" />
+    <ContentWithTargetPath Include="`$(MSBuildThisFileDirectory)\..\..\libgit2\LibGit2Sharp.NoExec.dll.config" TargetPath="LibGit2Sharp.NoExec.dll.config" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>
 "@
 
-    Set-Content -Encoding UTF8 (Join-Path $projectDirectory "nuget.package\build\net46\LibGit2Sharp.NativeBinaries.props") $net46BuildProperties
+    Set-Content -Encoding UTF8 (Join-Path $projectDirectory "nuget.package\build\net46\LibGit2Sharp.NoExec.NativeBinaries.props") $net46BuildProperties
 
     $dllConfig = @"
 <configuration>
@@ -129,7 +129,7 @@ Push-Location $libgit2Directory
 </configuration>
 "@
 
-    Set-Content -Encoding UTF8 (Join-Path $projectDirectory "nuget.package\libgit2\LibGit2Sharp.dll.config") $dllConfig
+    Set-Content -Encoding UTF8 (Join-Path $projectDirectory "nuget.package\libgit2\LibGit2Sharp.NoExec.dll.config") $dllConfig
 
     Write-Output "Done!"
 }
